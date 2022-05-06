@@ -109,7 +109,7 @@ public class User {
 
 	public User(@Size(max = 80) String username, @Size(max = 50) @Email String email, @Size(max = 120) String password,
 			String address, @Size(max = 50) String tel, @Size(max = 50) String nom, @Size(max = 50) String prenom
-			) {
+		) {
 		this.username = username;
 		this.email = email;
 		this.password = password;

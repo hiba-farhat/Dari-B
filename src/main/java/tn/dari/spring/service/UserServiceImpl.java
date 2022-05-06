@@ -194,14 +194,14 @@ public void forgotpass(String emailuser) {
                 Message.RecipientType.TO,
                 InternetAddress.parse(emailuser)
         );
-        message.setSubject("Rest Your Password");
+        message.setSubject("Reset Your Password");
         message.setText("This a non reply message from DariTn\n " 
         		+"Dear Client \n"
                 + "Please follow the following link to reser your password: \n" + "http://localhost:4200/update");
 
         Transport.send(message);
 
-        System.out.println("Done");
+       log.info("Done");
 
     } catch (MessagingException e) {
         e.printStackTrace();

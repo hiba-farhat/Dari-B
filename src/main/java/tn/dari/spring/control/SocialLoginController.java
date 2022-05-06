@@ -68,7 +68,7 @@ public class SocialLoginController {
 		log.info("googleIdTokeen" + tokenDto.getValue());
 		GoogleIdToken googleIdToken = GoogleIdToken.parse(ver.getJsonFactory(), tokenDto.getValue());
 		GoogleIdToken.Payload payload = googleIdToken.getPayload();
-		String username = payload.get("given_name").toString().concat("-").concat(payload.get("given_name").toString()).concat(getAlphaNumericString(n));
+		String username = payload.get("given_name").toString().concat("-").toString().concat(getAlphaNumericString(n));
 		String firstName = payload.get("given_name").toString();
 		String lastName = payload.get("family_name").toString();
 		// return new ResponseEntity<>(payload, HttpStatus.OK);

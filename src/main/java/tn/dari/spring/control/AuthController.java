@@ -99,7 +99,7 @@ public class AuthController {
 		} else {
 			strRoles.forEach(role -> {
 				switch (role) {
-				case "admin":
+				case "ROLE_ADMIN":
 					Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN);
 					roles.add(adminRole);
 
@@ -127,9 +127,9 @@ public class AuthController {
 
 		} else {
 
-			String code = UserCode.getCode();
-			// log.info("probleme"+user.getCode());
+			
 			user.setAccountVerified(1);
+			user.setRoles(roles);
 			userRepository.save(user);
 			accountResponse.setResult(1);
 
