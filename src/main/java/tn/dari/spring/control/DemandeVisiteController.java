@@ -1,4 +1,4 @@
-package tn.dari.spring.controller;
+package tn.dari.spring.control;
 
 import java.util.List;
 

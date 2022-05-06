@@ -24,10 +24,18 @@
 	<dependencies>
 	
 		<dependency>
-		  <groupId>com.twilio.sdk</groupId>
-		  <artifactId>twilio</artifactId>
-		  <version>8.5.0</version>
+   			<groupId>com.twilio.sdk</groupId>
+   			<artifactId>twilio</artifactId>
+   			<version>7.16.1</version>
 		</dependency>
+		
+		<dependency>
+    		<groupId>com.twilio.sdk</groupId>
+    		<artifactId>twilio</artifactId>
+   		 	<version>7.1.0</version>
+		</dependency>  
+		
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
