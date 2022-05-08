@@ -20,16 +20,31 @@ import tn.dari.spring.repository.UserRepository;
 public class RendezvousServiceImpl implements RendezvousService{
 	//SMS 
 	private final static String ACCOUNT_SID = "AC623eab300e4fb83165a966ce6ad5e9f0";
-	private final static String AUTH_ID = "d1b214e53f656ef5b76db373f0f929da";
+	private final static String AUTH_TOKEN = "d1b214e53f656ef5b76db373f0f929da";
+String message;
 
-	static {
-		Twilio.init(ACCOUNT_SID, AUTH_ID);
-	}  
-
+	
 	@Autowired
 	RendezvousRepository rendezvousRepository;
 	@Autowired
 	UserRepository userRepository;
+	
+	//SMS
+	  public void sendRefus() {
+			Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+	     Message msg= Message.creator(new PhoneNumber("+21620456568"), new PhoneNumber("+18507714598"),
+	         "Votre RendezVous est refusé ").create();
+	     System.out.println(msg.getSid());
+	   } 
+	  
+	  public void sendAccept() {
+			Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+	     Message msg= Message.creator(new PhoneNumber("+21620456568"), new PhoneNumber("+18507714598"),
+	         "Votre RendezVous est accepté ").create();
+	     System.out.println(msg.getSid());
+	   }
 	@Override
 	public List<Rendezvous> retrieveAllRdv() {
 		// TODO Auto-generated method stub
@@ -45,14 +60,18 @@ public class RendezvousServiceImpl implements RendezvousService{
 		rdv.setUser(user);
 		return rendezvousRepository.save(rdv);}
 	
-	//SMS
-		  public void run(ApplicationArguments arg0) throws Exception {
-		      Message.creator(new PhoneNumber("+12620456568"), new PhoneNumber("+18507714598"),
-		         "Votre RendezVous est accepté ").create();
-		   }
+	
 	@Override
 	public void deleteRdv(Long idRdv) {
 		rendezvousRepository.deleteById(idRdv);
+		//sendRefus();
+	}
+	
+
+	@Override
+	public Rendezvous accept(Rendezvous a) {
+		//sendAccept();
+		return rendezvousRepository.save(a);
 
 	}
 
@@ -67,5 +86,8 @@ public class RendezvousServiceImpl implements RendezvousService{
 		Rendezvous r = rendezvousRepository.findById(idRdv).get();
 		return r;		
 	}
+
+
+
 
 }

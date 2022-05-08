@@ -50,5 +50,8 @@ public class rendezvousController {
 	
 	
 	
-	
+	@PutMapping("/acceptRdv")
+	public Rendezvous accept(@RequestBody Rendezvous f) {
+		return rendezvousService.accept(f);
+	} 
 }

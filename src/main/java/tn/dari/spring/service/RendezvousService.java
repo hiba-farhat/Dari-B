@@ -14,6 +14,8 @@ public interface RendezvousService {
 
 	void deleteRdv(Long id);
 	
+	Rendezvous accept(Rendezvous a);
+	
 	Rendezvous updateRdv(Rendezvous r);
 	
 	Rendezvous retrieveRdv(Long id);
