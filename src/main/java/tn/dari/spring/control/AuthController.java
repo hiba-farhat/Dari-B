@@ -60,7 +60,7 @@ public class AuthController {
 	UserService userService;
 
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) throws Exception {
 
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
@@ -73,7 +73,8 @@ public class AuthController {
 				.collect(Collectors.toList());
 
 		return ResponseEntity.ok(
-				new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
+				new JwtResponse(jwt, userDetails.getUser().getId(), userDetails.getUsername(), userDetails.getUser().getEmail(), roles
+						,userDetails.getUser().isStateUser()));
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
@@ -99,7 +100,7 @@ public class AuthController {
 		} else {
 			strRoles.forEach(role -> {
 				switch (role) {
-				case "admin":
+				case "ROLE_ADMIN":
 					Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN);
 					roles.add(adminRole);
 
@@ -127,9 +128,9 @@ public class AuthController {
 
 		} else {
 
-			String code = UserCode.getCode();
-			// log.info("probleme"+user.getCode());
+			
 			user.setAccountVerified(1);
+			user.setRoles(roles);
 			userRepository.save(user);
 			accountResponse.setResult(1);
 
