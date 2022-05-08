@@ -75,5 +75,18 @@ public class JwtUtils {
 	        log.info("token utils:"+token);
 	        return new LoginResponse(jwtLogin.getUsername(),token);
 	    }
+	 
+
+	    /**
+	     * Returns the user id encapsulated within the token
+	     */
+	    public Long getUserIdFromJWT(String token) {
+	        Claims claims = Jwts.parser()
+	                .setSigningKey(jwtSecret)
+	                .parseClaimsJws(token)
+	                .getBody();
+
+	        return Long.parseLong(claims.getSubject());
+	    }
 
 }

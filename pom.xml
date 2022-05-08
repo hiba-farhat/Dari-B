@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.3</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<version>2.6.6</version>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>tn.esprit.spring</groupId>
-	<artifactId>dari-spring-boot</artifactId>
+	<groupId>tn.darib.spring</groupId>
+	<artifactId>dari-tn-b-1</artifactId>
 	<version>1.0</version>
-	<name>dari-spring-boot</name>
-	<description>dari-spring-boot</description>
+	<name>dari-tn-b-1</name>
+	<description>dari</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -22,6 +21,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
 		<dependency>
 			<groupId>com.google.api-client</groupId>
@@ -34,14 +34,23 @@
 			<version>2.0.3.RELEASE</version>
 		</dependency>
 
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
+
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter </artifactId>
+            <version>3.0.0 </version>
+         </dependency>
+
+<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -58,7 +67,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-websocket</artifactId>
@@ -71,15 +79,21 @@
 		</dependency>
 		<dependency>
 
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
 
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-boot-starter </artifactId>
-			<version>3.0.0 </version>
-		</dependency>
+
+       </dependency>
+       <dependency>
+          <groupId>com.stripe</groupId>
+            <artifactId>stripe-java</artifactId>
+            <version>20.41.0</version>
+</dependency>
+	
+
+
+	
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>

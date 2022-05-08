@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -21,6 +22,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -52,11 +54,11 @@ public class User {
 	private String password;
 
 //	@NotBlank
-	@Column(columnDefinition=" DEFAULT 'inconnue'")
+	//@Column(columnDefinition=" DEFAULT 'inconnue'")
 	private String address;
 
 //	@NotBlank
-	@Column(columnDefinition=" DEFAULT 'inconnue'")
+	//@Column(columnDefinition=" DEFAULT 'inconnue'")
 
 	@Size(max = 50)
 	private String tel;
@@ -74,38 +76,11 @@ public class User {
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
-	
+	private boolean stateUser ;
 	
 	private boolean enabled;
 
-//	public User() {
-//	}
 
-//	public User(String username, String email, String password) {
-//		this.username = username;
-//		this.email = email;
-//		this.password = password;
-//	}
-
-//	public Set<Role> getRoles() {
-//		return roles;
-//	}
-//
-//	public void setRoles(Set<Role> roles) {
-//		this.roles = roles;
-//	}
-//
-//	public boolean isAccountVerified() {
-//		return accountVerified;
-//	}
-//
-//	public boolean isEnabled() {
-//		return enabled;
-//	}
-//
-//	public void setEnabled(boolean enabled) {
-//		this.enabled = enabled;
-//	}
 
 	public User(@Size(max = 80) String username, @Size(max = 50) @Email String email, @Size(max = 120) String password,
 			String address, @Size(max = 50) String tel, @Size(max = 50) String nom, @Size(max = 50) String prenom
