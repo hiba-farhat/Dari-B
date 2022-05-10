@@ -51,22 +51,16 @@ public class ReclamationServiceImpl implements ReclamationService {
 			}
 		});
 		try {
-
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("daritn248@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailuser));
 			message.setSubject("Reset Your Password");
-			message.setText("This a non reply message from DariTn\n " + "Dear Client \n"
-					+ "Please follow the following link to reser your password: \n" + "http://localhost:4200/update");
-
+			message.setText("This a non reply message from DariTn\n your claim is submitted");
 			Transport.send(message);
-
 			log.info("Done");
-
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
-		
 		return reclamation;
 	}
 

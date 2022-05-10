@@ -50,11 +50,9 @@ public class ReclamationRestController {
 			//http://localhost:8081/DariTn/add-reclamation
 			@PostMapping("/add-reclamation")
 			@ResponseBody
-			public Reclamation addReclamation(@RequestBody Reclamation r)  {
+			public Reclamation addReclamation(@RequestBody Reclamation r, @PathVariable String emailUser)  {
 				
-				
-				
-				return reclamationService.addReclamation(r, null);
+				return reclamationService.addReclamation(r, emailUser);
 			}
 			
 			
