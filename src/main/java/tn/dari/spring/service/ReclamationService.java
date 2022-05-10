@@ -8,7 +8,7 @@ public interface ReclamationService {
 
 	List<Reclamation> retrieveAllReclamations();
 
-	Reclamation addReclamation(Reclamation r);
+	Reclamation addReclamation(Reclamation r, String emailuser);
 
 	Reclamation UpdateReclamation(Reclamation r, Long id);
 
