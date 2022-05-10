@@ -78,10 +78,17 @@ public class CreditServiceImpl implements CreditService {
 		credit.setBanque(banque);
 		credit.setPartmensuel(mensualite);
 		credit.setDuree(periode);
-		credit.setInteret(interet);
+		//credit.setInteret(interet);
 		return creditRepository.save(credit);
 		
 	}
+	
+	//count credit by bank name
+	/*
+	 * public int Count(String name){ int Occ = 0; String bankname; bankname =
+	 * banqueService.getBankByName(name).getNombanque(); Occ =
+	 * creditRepository.countByNombanque(bankname); return Occ; }
+	 */
 	
 	
 

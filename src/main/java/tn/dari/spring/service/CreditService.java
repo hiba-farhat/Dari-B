@@ -23,5 +23,7 @@ List<Credit> retrieveAllCredits();
 	Credit retrieveCreditById(Long id);
 	
 	public Credit simulation(Credit credit, Long idBanque);
+	
+	//public int Count(String name);
 
 }

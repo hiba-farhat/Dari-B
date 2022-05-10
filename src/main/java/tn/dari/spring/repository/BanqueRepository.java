@@ -20,5 +20,7 @@ public interface BanqueRepository  extends CrudRepository<Banque, Long>  {
 	
 	@Query
 	Credit findByNombanque(Banque nombanque);
+	
+	
 
 }

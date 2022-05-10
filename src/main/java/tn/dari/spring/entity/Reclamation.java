@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,9 +42,11 @@ public class Reclamation implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idReclamation;
 	
+	@NotBlank
 	@Column(name = "titreReclamation")
 	@NonNull private String titreReclamation;
 	
+	@NotBlank
 	@Column(name = "descriptionReclamation")
 	@NonNull private String descriptionReclamation;
 	

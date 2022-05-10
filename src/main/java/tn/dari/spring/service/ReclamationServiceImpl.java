@@ -50,9 +50,8 @@ public class ReclamationServiceImpl implements ReclamationService {
 	}
 
 	@Override
-	public Reclamation deleteReclamation(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteReclamation(Long id) {
+		reclamationRepository.deleteById(id);
 	}
 	
 	

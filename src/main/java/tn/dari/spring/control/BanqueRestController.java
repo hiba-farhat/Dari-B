@@ -19,10 +19,11 @@ import tn.dari.spring.entity.Banque;
 import tn.dari.spring.service.BanqueService;
 
 
+
 @RestController
 @RequestMapping("/banques")
-@Api(tags="gestion des banques")
 @CrossOrigin(origins = "http://localhost:4200")
+@Api(tags="gestion des banques")
 public class BanqueRestController {
 	
 
@@ -46,12 +47,12 @@ public class BanqueRestController {
 		}
 		
 		//http://localhost:8081/DariTn/banque/update-bank
-		 @PutMapping("/updateBanque/{id}")      
-		    private Banque updateBank(@RequestBody Banque banque, @PathVariable("id")Long id )
+		 @PutMapping("/updateBanque")      
+		    private Banque updateBank(@RequestBody Banque banque )
 		    {        
-		    	banqueService.updateBanque(banque, id); 
+		    	banqueService.updateBanque(banque); 
 		    //return banqueService.updateBanque(banque, id);  
-		    	return banque;
+		    	return banqueService.updateBanque(banque);
 		    }
 		
 		//http://localhost:8081/DariTn/banque/delete-bank/{id}
@@ -71,6 +72,12 @@ public class BanqueRestController {
 		@GetMapping("/getAllBankByNames")
 		public List<String> getAllBankByNames(){
 			return banqueService.getAllBankByNames();
+		}
+		
+		@GetMapping("/getBankByName")
+		public Banque getBankByName(String nombanque) {
+			return banqueService.getBankByName(nombanque);
+			
 		}
 
 }

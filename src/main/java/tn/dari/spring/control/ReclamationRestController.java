@@ -70,7 +70,7 @@ public class ReclamationRestController {
 			@DeleteMapping("/delete-reclamation/{id}")
 			@ResponseBody
 			public void deleteReclamation(@PathVariable("id") Long id) {
-				reclamationService.retrieveReclamationById(id);
+				reclamationService.deleteReclamation(id);
 			}
 			
 			//http://localhost:8081/DariTn/numberOfClaims

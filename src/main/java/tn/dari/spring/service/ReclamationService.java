@@ -16,6 +16,6 @@ public interface ReclamationService {
 
 	Reclamation retrieveReclamationById(Long id);
 
-	Reclamation deleteReclamation(Long id);
+	void deleteReclamation(Long id);
 
 }

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,14 @@ import org.thymeleaf.context.Context;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import tn.dari.spring.entity.Credit;
 
@@ -60,30 +69,31 @@ public class PdfService {
     private String loadAndFillTemplate(Context context) {
         return templateEngine.process("credit", context);
     }
-	/*
-	 * public void export(HttpServletResponse response) throws DocumentException,
-	 * IOException, BadElementException { Document document = new Document();
-	 * PdfWriter.getInstance(document, response.getOutputStream());
-	 * 
-	 * document.open(); Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
-	 * font.setSize(18); //font.setColor(Color.BLUE);
-	 * 
-	 * Paragraph p = new Paragraph("Credit", font);
-	 * p.setAlignment(Paragraph.ALIGN_CENTER);
-	 * 
-	 * document.add(p);
-	 * 
-	 * PdfPTable table = new PdfPTable(4); table.setWidthPercentage(100f);
-	 * table.setWidths(new float[] {3.0f, 3.0f, 3.0f,3.0f});
-	 * table.setSpacingBefore(10);
-	 * 
-	 * writeTableHeader(table); writeTableData(table);
-	 * 
-	 * document.add(table);
-	 * 
-	 * 
-	 * document.close();
-	 * 
-	 * }
-	 */
+    
+	
+	  public void export(HttpServletResponse response) throws DocumentException,
+	  IOException, BadElementException { Document document = new Document();
+	  PdfWriter.getInstance(document, response.getOutputStream());
+	  
+	  document.open(); Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+	  font.setSize(18); //font.setColor(Color.BLUE);
+	  
+	  Paragraph p = new Paragraph("Credit", font);
+	  p.setAlignment(Paragraph.ALIGN_CENTER);
+	  
+	  document.add(p);
+	  
+	  PdfPTable table = new PdfPTable(4); table.setWidthPercentage(100f);
+	  table.setWidths(new float[] {3.0f, 3.0f, 3.0f,3.0f});
+	  table.setSpacingBefore(10);
+	  
+	  //writeTableHeader(table); writeTableData(table);
+	  
+	  document.add(table);
+	  
+	  
+	  document.close();
+	  
+	  }
+	 
 }

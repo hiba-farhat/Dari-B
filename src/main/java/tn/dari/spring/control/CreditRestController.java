@@ -84,7 +84,14 @@ public class CreditRestController {
 					
 		byte[] content = Files.readAllBytes(Paths.get(pdfService.generatePdf(Optional.of(credit)).getAbsolutePath()));
 				}
-				
+		
+	//statistics used bank
+	/*
+	 * @GetMapping(value ="/count/{nombanque}")
+	 * 
+	 * @ResponseBody private int Count(@PathVariable ("nombanque") String
+	 * nombanque){ return creditService.Count(nombanque); }
+	 */
 
 
 }

@@ -25,7 +25,7 @@ import lombok.Setter;
 @AllArgsConstructor
 
 @Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = "username"),
-		@UniqueConstraint(columnNames = "email") })
+@UniqueConstraint(columnNames = "email") })
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,11 +52,11 @@ public class User {
 	private String password;
 
 //	@NotBlank
-	@Column(columnDefinition=" DEFAULT 'inconnue'")
+	//@Column(columnDefinition=" DEFAULT 'inconnue'")
 	private String address;
 
 //	@NotBlank
-	@Column(columnDefinition=" DEFAULT 'inconnue'")
+	//@Column(columnDefinition=" DEFAULT 'inconnue'")
 
 	@Size(max = 50)
 	private String tel;

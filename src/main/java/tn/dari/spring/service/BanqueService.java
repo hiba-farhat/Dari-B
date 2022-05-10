@@ -13,7 +13,7 @@ public interface BanqueService {
 	List<Banque> retrieveAllBanques();
 	Banque addBanque(Banque b);
 	void deleteBanque(Long id);
-	Banque updateBanque(Banque b, Long id);
+	Banque updateBanque(Banque b);
 	Banque retrieveBanqueById(Long id);
 	List<String> getAllBankByNames();
 	public Banque getBankByName(String nombanque);

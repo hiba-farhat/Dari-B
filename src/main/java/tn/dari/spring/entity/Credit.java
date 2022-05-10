@@ -52,9 +52,9 @@ public class Credit implements Serializable {
 	@Column(name="partmensuel")
 	@NonNull private double partmensuel;
 	
-	 @Column(name="interet") 
-	 private double interet;
-	 
+	/*
+	 * @Column(name="interet") private double interet;
+	 */
 	
 	@Column(name="duree")
 	@NonNull private int duree;

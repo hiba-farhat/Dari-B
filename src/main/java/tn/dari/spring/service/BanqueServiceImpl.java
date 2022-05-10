@@ -35,13 +35,9 @@ public class BanqueServiceImpl implements BanqueService  {
 	}
 
 	@Override
-	public Banque updateBanque(Banque b, Long id) {
-		Banque banque = banqueRepository.findById(id).get();
-        banque.setNombanque(b.getNombanque());
-       // Bank.setInterestrate(b.getInterestrate());
-       
-        banqueRepository.save(banque);
-        return banque;
+	public Banque updateBanque(Banque b) {
+		return banqueRepository.save(b);
+		
 	}
 
 	@Override

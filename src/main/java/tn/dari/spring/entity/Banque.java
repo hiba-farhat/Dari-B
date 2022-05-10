@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -46,7 +49,7 @@ public class Banque implements Serializable {
 
 	@Column(name="interetBanque")
 	@NonNull private double interetBanque;
-	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Credit> credit;
 
