@@ -15,4 +15,6 @@ public interface NotificationService {
 		Notification updateNotification(Notification n, Long id );
 		
 		Notification retrieveNotification(Long id);
+		long countNotification();
+
 }

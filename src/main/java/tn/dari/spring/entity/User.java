@@ -10,58 +10,67 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.ToString;
 
-
-@Entity
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-@RequiredArgsConstructor
-public class User  {
-	private static final long serialVersionUID = 1L;
-	@Id
+@AllArgsConstructor
+@Entity
+@ToString
+@Table(name="user")
+public class User implements Serializable   {
+    @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	  @NonNull  private Long id;
+	@Column(name="id")
+	private Long id;
 
 	@Column(name="email")
-	  @NonNull private String email;
+	private String email;
 
 	@Column(name="nom")
-	  @NonNull private String nom;
+	private String nom;
 	
 	@Column(name="prenom")
-	  @NonNull private String prenom;
+	private String prenom;
 	
 	@Column(name="username")
-	  @NonNull  private String username;
+	private String username;
 	
 	@Column(name="tel")
-	  @NonNull private String tel;
+	private String tel;
 	
 
 	@Column(name="password")
-	  @NonNull private String password;
-	
-	@JsonIgnore 
-	@OneToMany(cascade =CascadeType.ALL,mappedBy="user",fetch=FetchType.EAGER)
-    private Set<favoris> favoris;
-    @JsonIgnore
-    @OneToMany(cascade =CascadeType.ALL,mappedBy="user",fetch=FetchType.EAGER)
-    private Set<Notification> Notification;
+	private String password;
 	
 
+     
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+    
+    @JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<favoris> favoris;
+
+
+
+	
+	
+	
 }

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -37,10 +38,12 @@ public class Notification {
 	 	 public String description_notif;
 	 //	@JsonIgnore
 	     @ManyToOne(cascade = CascadeType.ALL)
-	    Property  Property ;
+	    Annonce Annonce ;
 		//@JsonIgnore
 	     @ManyToOne(cascade = CascadeType.ALL)
 	    	User user;
+	 //	@OneToOne
+//	 	@JoinColumn(name="Notif_annonces")
 	  //  @JsonIgnore
 	  //  @ManyToOne
 	   // private User user;

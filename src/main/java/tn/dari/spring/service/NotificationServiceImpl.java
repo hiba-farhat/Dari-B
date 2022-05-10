@@ -40,6 +40,12 @@ public class NotificationServiceImpl implements NotificationService  {
 		return n;
 	}
 
+	@Override
+	public long countNotification() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 
 }
