@@ -117,7 +117,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js").permitAll()
+
                 .antMatchers("/**/api/auth/**","/**/user/**","/user/checkEmail","/user/allUsers","/api/auth/**","/user/**","/reclamation/**","/banques/**","/credit/**").permitAll()
+
+
+                .antMatchers("/**/api/auth/**","/**/user/**","/user/checkEmail","/user/allUsers","/api/auth/**","/user/**",
+                	"/abonnement/**","/Assurance/**","/stripe/**"	).permitAll()
+
+
+                
+                .antMatchers("/**/api/auth/**","/**/user/**","/user/checkEmail",
+                		"/Annonces/**","/user/allUsers","/api/auth/**","/user/**").permitAll()
+
         .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                 .anyRequest().authenticated();
 

@@ -26,9 +26,11 @@ public interface UserService {
 	Role updateRole(Role p, Long id);
 
 	void deleteRole(Long id);
-
+	public User activateUser (User user);
+	public User desactivateUser (User user);
 	void updatePassword(String emailUser, String newPassword, String confirmPassword);
-
+	List<User> retrieveUserByState(boolean stateUser);
+	public boolean getstateUser(User user);
 	void forgotpass(String emailuser);
 
 	List<Role> getRoles();
