@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Credit</title>
+    <bookmarks>
+        <bookmark name="credit" href="#credit">
+        </bookmark>
+    </bookmarks>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <style>
+</style>
+</head>
+
+<body>
+    <h1 align="center">La simulation de votre crédit</h1>
+     <div>
+     <table> 
+     <tr>
+       <td> <h3> Montant du credit:</h3> </td>
+       <td> <p  th:text="${credit?.montant}"> </p> </td>
+       </tr>
+       <tr> 
+       <td> <h3>Durée:</h3> </td>
+       <td> <p  th:text="${credit?.duree}"> </p> </td>
+       </tr>
+        <tr>
+       <td> <h3>Mensualités:</h3> </td>
+        <td> <p  th:text="${credit?.partmensuel}"> </p> </td>
+        </tr>
+        <tr>
+       <td> <h3>Banque:</h3> </td>
+       <td> <p  th:text="${credit?.banque}"> </p> </td>
+       </tr>
+       </table> 
+    </div>
+
+</body>
+</html>
