@@ -1,5 +1,6 @@
 package tn.dari.spring.payload.request;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.validation.constraints.*;
@@ -47,7 +48,9 @@ public class SignupRequest {
     private boolean enabled;
     private String verificationCode;
 	private boolean accountVerified;
-
+	
+	private Date birth;
+ 
 
 
     

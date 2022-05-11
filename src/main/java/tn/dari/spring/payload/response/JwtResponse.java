@@ -14,14 +14,21 @@ public class JwtResponse {
 	private String email;
 	private List<String> roles;
 	private boolean stateUser;
+	private String nom;
+	private String prenom;
+	private String tel;
 
-	public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles,boolean stateUser) {
+	public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles,boolean stateUser
+			,String nom,String prenom,String tel) {
 		this.token = accessToken;
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.roles = roles;
 		this.stateUser=stateUser;
+		this.nom=nom;
+		this.prenom=prenom;
+		this.tel=tel;
 	}
 
 	public String getAccessToken() {

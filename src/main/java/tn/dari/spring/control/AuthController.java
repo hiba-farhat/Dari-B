@@ -34,7 +34,6 @@ import tn.dari.spring.repository.UserRepository;
 import tn.dari.spring.security.UserDetailsImpl;
 import tn.dari.spring.service.UserService;
 import tn.dari.spring.userFunctions.AccountResponse;
-import tn.dari.spring.userFunctions.UserCode;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -69,12 +68,15 @@ public class AuthController {
 		String jwt = jwtUtils.generateJwtToken(authentication);
 
 		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+		authentication.getPrincipal();
 		List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
 				.collect(Collectors.toList());
-
 		return ResponseEntity.ok(
-				new JwtResponse(jwt, userDetails.getUser().getId(), userDetails.getUsername(), userDetails.getUser().getEmail(), roles
-						,userDetails.getUser().isStateUser()));
+				new JwtResponse(jwt, userDetails.getUser().getId(), userDetails.getUsername(), 
+						userDetails.getUser().getEmail(), roles
+						,userDetails.getUser().isStateUser(),userDetails.getUser().getNom(),
+						userDetails.getUser().getPrenom(),
+						userDetails.getUser().getTel()));
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
@@ -90,7 +92,7 @@ public class AuthController {
 		// Create new user's account
 		User user = new User(signUpRequest.getUsername(), signUpRequest.getEmail(),
 				encoder.encode(signUpRequest.getPassword()), signUpRequest.getAddress(), signUpRequest.getTel(),
-				signUpRequest.getNom(), signUpRequest.getPrenom());
+				signUpRequest.getNom(), signUpRequest.getPrenom(),signUpRequest.getBirth());
 
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
@@ -128,8 +130,7 @@ public class AuthController {
 
 		} else {
 
-			
-			user.setAccountVerified(1);
+			user.setStateUser(true);
 			user.setRoles(roles);
 			userRepository.save(user);
 			accountResponse.setResult(1);

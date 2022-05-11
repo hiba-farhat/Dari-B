@@ -11,6 +11,8 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -99,14 +101,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		return userRepo.save(user);
 	}
 
-//	@Override
-//	public void lockUser(Long id, boolean status) {
-//		// TODO Auto-generated method stub
-//		User user = userRepo.findById(id).get();
-//		user.setAccountNonLocked(status);
-//		;
-//		userRepo.save(user);
-//	}
+
 
 	@Override
 	public Role updateRole(Role role, Long id) {
@@ -126,11 +121,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		return userRepo.save(user);
 	}
 
-	@Override
-	public void lockUser(Long id, boolean status) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	@Override
 	public void addRoleToUser(String username, String roleName) {
@@ -157,7 +148,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		u.setPassword(encodedPassword);
 		u.setConfirmPasswordUser(encodedConfirmPassword);
 
-		u.setResetPasswordToken(null);
+		
 		userRepo.save(u);
 	}
 
@@ -166,8 +157,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		// TODO Auto-generated method stub
 		User d = userRepo.findByEmail(emailuser);
 
-		final String username = "hiba.farhat.fh@gmail.com";
-		final String password = "tlyl dnxq itty qrsw";
+		final String username = "daritn248@gmail.com";
+		final String password = "nlpi glei goil dmfy";
 
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -185,7 +176,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("hiba.farhat.fh@gmail.com"));
+			message.setFrom(new InternetAddress("daritn248@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailuser));
 			message.setSubject("Reset Your Password");
 			message.setText("This a non reply message from DariTn\n " + "Dear Client \n"
@@ -213,11 +204,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		return userRepo.save(user);
 	}
 
-	@Override
-	public User desactivateUser(User user) {
-		user.setEnabled(false);
-		return userRepo.save(user);
-	}
+	
 
 	@Override
 	public List<User> retrieveUserByState(boolean stateUser) {
@@ -232,5 +219,24 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		}
 
 	}
+	
+	//******************************stat************************
+	
+	@Override
+	public List<User> retrieveUserByAddress(String adressUser) {
+		return userRepo.findByAddress(adressUser);
+	}
+	@Override
+	@Scheduled(fixedDelay = 1000)
+
+		public long retrieveUserByCount() {
+		log.info("nb users : "+userRepo.count());
+			return userRepo.count();
+		}
+
+
 
 }
+
+	
+

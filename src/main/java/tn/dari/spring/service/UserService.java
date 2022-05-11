@@ -19,7 +19,6 @@ public interface UserService {
 
 	User updateUser(User user);
 
-	void lockUser(Long id, boolean status);
 
 	User getUser(String username);
 
@@ -27,7 +26,6 @@ public interface UserService {
 
 	void deleteRole(Long id);
 	public User activateUser (User user);
-	public User desactivateUser (User user);
 	void updatePassword(String emailUser, String newPassword, String confirmPassword);
 	List<User> retrieveUserByState(boolean stateUser);
 	public boolean getstateUser(User user);
@@ -40,4 +38,9 @@ public interface UserService {
 	boolean ifEmailExist(String email);
 
 	User getUserByMail(String mail);
+	
+	
+	//**********Stat***********
+	List<User> retrieveUserByAddress(String adressUser);
+	public long retrieveUserByCount();
 }

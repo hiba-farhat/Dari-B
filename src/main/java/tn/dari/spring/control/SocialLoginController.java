@@ -105,10 +105,8 @@ public class SocialLoginController {
 		User userFacebook = facebook.fetchObject("me", User.class, data);
 		// String
 
-		log.info("userrfb : " + userFacebook.getFirstName());
 		 
 		String username = userFacebook.getFirstName().concat(getAlphaNumericString(n));
-		log.info("usernaùe : " + username);
 
 		return login(userFacebook.getEmail(), username,userFacebook.getFirstName(),userFacebook.getLastName());
 	}
@@ -119,17 +117,15 @@ public class SocialLoginController {
 		if (!result) {
 			tn.dari.spring.entity.User user = new tn.dari.spring.entity.User();
 			user.setEmail(email);
-			// user.setPassword(passwordEncoder.encode("kasdjhfkadhsY776ggTyUU65khaskdjfhYuHAwjñlji"));
 			user.setPassword(encoder.encode("root1234"));
 			user.setUsername(username);
-			user.setAccountVerified(1);
+			user.setStateUser(true);
 			user.setPrenom(prenom);
 			user.setNom(nom);
 
 			userRepo.save(user);
 		}
 		JwtLogin jwtLogin = new JwtLogin();
-		log.info("ussssser" + username);
 		jwtLogin.setUsername(username);
 		jwtLogin.setPassword("root1234");
 		jwtLogin.setNom(nom);

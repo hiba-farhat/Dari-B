@@ -120,7 +120,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 
                 .antMatchers("/**/api/auth/**","/**/user/**","/user/checkEmail",
-                		"/Annonces/**","/user/allUsers","/api/auth/**","/user/**").permitAll()
+                		"/Annonces/**","/user/allUsers","/api/auth/**","/user/**","/imageUser/**","/chat-websocket/**","/chat/**").permitAll()
         .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                 .anyRequest().authenticated();
 

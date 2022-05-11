@@ -19,6 +19,9 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Entity
 @Getter
 @Setter
@@ -32,59 +35,59 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 
+	@Size(max = 50)
+	private String nom;
+//	@NotBlank
+	@Size(max = 50)
+	private String prenom;
+	
 	@NotBlank
 	@Size(max = 50)
 	@NotNull
 	String username;
+	private boolean stateUser;
 
 //	@NotBlank
 	@Size(max = 80)
 	@Email
 	@NotNull
 	private String email;
-	@Column(name = "resettoken")
-	protected String resetPasswordToken;
-	
-	protected String confirmPasswordUser ;
+
 
 //	@NotBlank
 	@Size(max = 120)
 	@NotNull
 	private String password;
+	protected String confirmPasswordUser;
 
 //	@NotBlank
-	//@Column(columnDefinition=" DEFAULT 'inconnue'")
+	// @Column(columnDefinition=" DEFAULT 'inconnue'")
 	private String address;
 
 //	@NotBlank
-	//@Column(columnDefinition=" DEFAULT 'inconnue'")
 
 	@Size(max = 50)
 	private String tel;
 //	@NotBlank
-	@Size(max = 50)
-	private String nom;
-//	@NotBlank
-	@Size(max = 50)
-	private String prenom;
 
-	private int accountVerified;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JsonIgnore
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
-
-	private boolean stateUser ;
 	
-	private boolean enabled;
+	@Temporal (TemporalType.DATE)
+	private Date birth ;
+	
+	
+	private boolean connected;
 
 
 
 	public User(@Size(max = 80) String username, @Size(max = 50) @Email String email, @Size(max = 120) String password,
-			String address, @Size(max = 50) String tel, @Size(max = 50) String nom, @Size(max = 50) String prenom
-		) {
+			String address, @Size(max = 50) String tel, @Size(max = 50) String nom, @Size(max = 50) String prenom, Date birth) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
@@ -92,7 +95,8 @@ public class User {
 		this.tel = tel;
 		this.nom = nom;
 		this.prenom = prenom;
-	
+		this.birth=birth;
+
 	}
 
 }
